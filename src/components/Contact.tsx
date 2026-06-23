@@ -40,6 +40,10 @@ function validateForm(data: ContactFormData): FormErrors {
   return errors;
 }
 
+function isFormValid(data: ContactFormData): boolean {
+  return Object.keys(validateForm(data)).length === 0;
+}
+
 export default function Contact() {
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
@@ -51,6 +55,8 @@ export default function Contact() {
   const [popup, setPopup] = useState<PopupState | null>(null);
 
   const closePopup = useCallback(() => setPopup(null), []);
+
+  const canSubmit = isFormValid(formData);
 
   const handleChange = (field: keyof ContactFormData, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -242,7 +248,7 @@ export default function Contact() {
 
                 <button
                   type="submit"
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || !canSubmit}
                   className="btn-primary w-full sm:w-auto disabled:cursor-not-allowed disabled:opacity-70"
                 >
                   {isSubmitting ? 'جاري الإرسال...' : 'إرسال الرسالة'}
