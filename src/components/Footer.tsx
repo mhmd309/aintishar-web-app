@@ -124,7 +124,6 @@ export default function Footer() {
             </div>
           </div>
         </div>
-
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row">
           <p className="text-center text-sm text-gray-500 sm:text-right">
             © {currentYear} {COMPANY.fullName}. جميع الحقوق محفوظة.
