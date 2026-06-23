@@ -2,19 +2,20 @@ import { COMPANY } from '../data/company';
 import type { ContactFormData } from '../types';
 
 /**
- * متغيرات EmailJS — الأسماء تطابق إعدادات القالب:
+ * متوافق مع القالب الافتراضي في EmailJS:
  *
  * Settings:
  *   From Name → {{name}}
  *   Reply To  → {{email}}
  *
- * Content (ضع هذا فقط واحذف النص الإنجليزي):
- *   {{message}}
+ * Content — لا تحذف هيكل القالب! غيّر السطر الإنجليزي فقط إلى {{intro}}
+ * القالب يعرض {{name}} في الأعلى و {{message}} في الأسفل تلقائياً.
  */
 export interface EmailJsTemplateParams {
   name: string;
   email: string;
   message: string;
+  intro: string;
   subject: string;
 }
 
@@ -25,7 +26,7 @@ function formatSentAt(date: Date): string {
   }).format(date);
 }
 
-function buildEmailBody(
+function buildMessageBody(
   name: string,
   email: string,
   userMessage: string,
@@ -33,11 +34,10 @@ function buildEmailBody(
   source: string,
 ): string {
   return [
-    `تم وصول رسالة من ${name} . يرجى الرد في أقرب وقت ممكن.`,
-    '',
     `الاسم: ${name}`,
     `البريد الإلكتروني: ${email}`,
-    `الرسالة: ${userMessage}`,
+    userMessage,
+    '',
     `وقت الإرسال: ${sentAt}`,
     `المصدر: ${source}`,
   ].join('\n');
@@ -53,7 +53,8 @@ export function buildEmailJsParams(data: ContactFormData): EmailJsTemplateParams
   return {
     name,
     email,
-    message: buildEmailBody(name, email, userMessage, sentAt, source),
+    message: buildMessageBody(name, email, userMessage, sentAt, source),
+    intro: `تم وصول رسالة من ${name} . يرجى الرد في أقرب وقت ممكن.`,
     subject: `رسالة تواصل — ${name}`,
   };
 }
