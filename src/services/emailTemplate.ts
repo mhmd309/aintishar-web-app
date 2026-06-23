@@ -1,25 +1,14 @@
 import { COMPANY } from '../data/company';
 import type { ContactFormData } from '../types';
 
-/**
- * حقول قالب EmailJS — الأسماء يجب أن تطابق {{متغير}} في لوحة التحكم.
- *
- * | المتغير        | الاستخدام في القالب                          |
- * |----------------|-----------------------------------------------|
- * | name           | From Name + عنوان المرسل في جسم الرسالة       |
- * | email          | Reply To                                      |
- * | user_message   | نص الرسالة فقط (بدون تفاصيل إضافية)           |
- * | message        | نص الرسالة + بيانات المرسل (للعرض الكامل)     |
- * | subject        | موضوع البريد                                  |
- * | summary        | جملة تمهيدية عربية بدل النص الإنجليزي الافتراضي |
- */
 export interface EmailJsTemplateParams {
   name: string;
   email: string;
-  user_message: string;
   message: string;
+  sent_at: string;
+  source: string;
+  user_message: string;
   subject: string;
-  summary: string;
 }
 
 function formatSentAt(date: Date): string {
@@ -29,31 +18,33 @@ function formatSentAt(date: Date): string {
   }).format(date);
 }
 
-function formatEmailBody(name: string, email: string, userMessage: string): string {
+function formatEmailDetails(
+  name: string,
+  email: string,
+  sentAt: string,
+  source: string,
+): string {
   return [
-    userMessage,
-    '',
-    '──────────────────────────────',
-    'تفاصيل المرسل',
-    '──────────────────────────────',
     `الاسم: ${name}`,
     `البريد الإلكتروني: ${email}`,
-    `وقت الإرسال: ${formatSentAt(new Date())}`,
-    `المصدر: موقع ${COMPANY.fullName}`,
+    `وقت الإرسال: ${sentAt}`,
+    `المصدر: ${source}`,
   ].join('\n');
 }
 
 export function buildEmailJsParams(data: ContactFormData): EmailJsTemplateParams {
   const name = data.name.trim();
   const email = data.email.trim();
-  const userMessage = data.message.trim();
+  const sentAt = formatSentAt(new Date());
+  const source = `موقع ${COMPANY.fullName}`;
 
   return {
     name,
     email,
-    user_message: userMessage,
-    message: formatEmailBody(name, email, userMessage),
+    sent_at: sentAt,
+    source,
+    user_message: data.message.trim(),
+    message: formatEmailDetails(name, email, sentAt, source),
     subject: `رسالة تواصل — ${name}`,
-    summary: `وصلتك رسالة جديدة من ${name} عبر موقع ${COMPANY.name}. يرجى الرد في أقرب وقت.`,
   };
 }
