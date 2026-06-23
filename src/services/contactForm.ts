@@ -43,6 +43,6 @@ export async function submitContactForm(data: ContactFormData): Promise<void> {
 
     const message =
       error instanceof Error ? error.message : 'تعذّر إرسال الرسالة.';
-    throw new ContactFormSubmitError(message);
+    throw new ContactFormSubmitError(message); 
   }
 }
