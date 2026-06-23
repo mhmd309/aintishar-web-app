@@ -4,6 +4,7 @@ import type { ContactFormData } from '../types';
 export interface EmailJsTemplateParams {
   name: string;
   email: string;
+  intro: string;
   message: string;
   sent_at: string;
   source: string;
@@ -41,6 +42,7 @@ export function buildEmailJsParams(data: ContactFormData): EmailJsTemplateParams
   return {
     name,
     email,
+    intro: `تم وصول رسالة من ${name} . يرجى الرد في أقرب وقت ممكن.`,
     sent_at: sentAt,
     source,
     user_message: data.message.trim(),

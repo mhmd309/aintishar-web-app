@@ -29,22 +29,24 @@ export default function Navbar() {
 
   const handleNavClick = () => setIsMenuOpen(false);
 
-  const linkClass = isScrolled
+  const isSolidHeader = isScrolled || isMenuOpen;
+
+  const linkClass = isSolidHeader
     ? 'text-gray-600 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400'
     : 'text-white hover:text-primary-200';
 
-  const iconBtnClass = isScrolled ? 'btn-nav-icon-scrolled' : 'btn-nav-icon-hero';
+  const iconBtnClass = isSolidHeader ? 'btn-nav-icon-scrolled' : 'btn-nav-icon-hero';
 
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'border-b border-gray-200/70 bg-white/85 shadow-sm backdrop-blur-lg dark:border-gray-800/70 dark:bg-slate-900/85'
+        isSolidHeader
+          ? 'border-b border-gray-200/70 bg-white/95 shadow-sm backdrop-blur-lg dark:border-gray-800/70 dark:bg-slate-900/95'
           : 'bg-transparent'
       }`}
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        <Logo variant={isScrolled ? 'default' : 'light'} />
+      <nav className="relative z-[60] mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+        <Logo variant={isSolidHeader ? 'default' : 'light'} />
 
         <ul className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
@@ -105,7 +107,7 @@ export default function Navbar() {
       </nav>
 
       <div
-        className={`fixed inset-0 top-[72px] z-40 bg-slate-900/50 backdrop-blur-sm transition-opacity md:hidden ${
+        className={`fixed inset-0 z-[55] bg-slate-900/50 transition-opacity md:hidden ${
           isMenuOpen ? 'opacity-100' : 'pointer-events-none opacity-0'
         }`}
         onClick={() => setIsMenuOpen(false)}
@@ -113,8 +115,8 @@ export default function Navbar() {
       />
 
       <div
-        className={`absolute inset-x-0 top-full border-b border-gray-200 bg-white shadow-lg transition-all duration-300 md:hidden dark:border-gray-800 dark:bg-slate-900 ${
-          isMenuOpen ? 'visible opacity-100' : 'invisible opacity-0'
+        className={`fixed inset-x-0 top-[73px] z-[58] max-h-[calc(100dvh-73px)] overflow-y-auto border-b border-gray-200 bg-white shadow-lg transition-all duration-300 md:hidden dark:border-gray-800 dark:bg-slate-900 ${
+          isMenuOpen ? 'visible opacity-100' : 'pointer-events-none invisible opacity-0'
         }`}
       >
         <ul className="flex flex-col gap-1 px-4 py-4">
