@@ -36,7 +36,7 @@ function buildMessageBody(
   return [
     `الاسم: ${name}`,
     `البريد الإلكتروني: ${email}`,
-    userMessage,
+    `الرسالة: ${userMessage}`,
     '',
     `وقت الإرسال: ${sentAt}`,
     `المصدر: ${source}`,
