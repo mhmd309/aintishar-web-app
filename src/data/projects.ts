@@ -1,0 +1,81 @@
+import type { Project } from '../types';
+
+const WORK_IMAGES = {
+  w01: '/img/work/w01.png',
+  w02: '/img/work/w02.png',
+  w03: '/img/work/w03.png',
+  w04: '/img/work/w04.png',
+  w05: '/img/work/w05.png',
+  w06: '/img/work/w06.png',
+  w07: '/img/work/w07.png',
+} as const;
+
+export const projects: Project[] = [
+  {
+    id: 1,
+    name: 'موقع لإدارة المحاميات',
+    image: WORK_IMAGES.w01,
+    statuses: ['مدفوع', 'جديد'],
+    demoUrl: '#',
+    description: 'نظام متكامل لإدارة العملاء والقضايا والمواعيد للمكاتب القانونية.',
+    technologies: ['React.js', 'Next.js'],
+  },
+  {
+    id: 2,
+    name: 'متجر إلكتروني متكامل',
+    image: WORK_IMAGES.w02,
+    statuses: ['مدفوع', 'جديد'],
+    demoUrl: '#',
+    description: 'منصة تجارة إلكترونية مع إدارة المنتجات والطلبات والدفع الإلكتروني.',
+    technologies: ['React.js', 'Next.js'],
+  },
+  {
+    id: 3,
+    name: 'موقع لإدارة تحاليل الحمض النووى',
+    image: WORK_IMAGES.w03,
+    statuses: ['مدفوع', 'قريباً'],
+    demoUrl: '#',
+    description: 'لوحة تحكم لإدارة نتائج التحاليل ومتابعة الحالات والتقارير الطبية.',
+    technologies: ['React.js', 'Next.js', 'Node.js'],
+  },
+  {
+    id: 4,
+    name: 'موقع رمضان كريم',
+    image: WORK_IMAGES.w04,
+    statuses: ['مجاني'],
+    demoUrl: '#',
+    description: 'موقع تفاعلي للمناسبات الدينية مع محتوى يومي وأذكار ومواقيت الصلاة.',
+    technologies: ['Javascript', 'Tailwind CSS'],
+  },
+  {
+    id: 5,
+    name: 'موقع اطعمتك',
+    image: WORK_IMAGES.w05,
+    statuses: ['مدفوع', 'قريباً'],
+    demoUrl: '#',
+    description: 'تطبيق ويب لطلب الطعام وإدارة المطاعم والتوصيل في الوقت الفعلي.',
+    technologies: ['React', 'MySQL'],
+  },
+  {
+    id: 6,
+    name: 'موقع إسلامى',
+    image: WORK_IMAGES.w06,
+    statuses: ['مدفوع', 'محدّث'],
+    demoUrl: '#',
+    description: 'منصة محتوى إسلامي تشمل القرآن والأحاديث والفتاوى والدروس الصوتية.',
+    technologies: ['PHP', 'MySQL'],
+  },
+  {
+    id: 7,
+    name: 'موقع تجريبى للمشروعات',
+    image: WORK_IMAGES.w07,
+    statuses: ['جديد'],
+    demoUrl: '#',
+    description: 'منصة محتوى إسلامي تشمل القرآن والأحاديث والفتاوى والدروس الصوتية.',
+    technologies: ['PHP', 'MySQL'],
+  },
+];
+
+export const PROJECTS_PER_PAGE = 6;
+
+export const ALL_STATUSES = ['الكل', 'جديد', 'قريباً', 'محدّث', 'مجاني', 'مدفوع'] as const;
