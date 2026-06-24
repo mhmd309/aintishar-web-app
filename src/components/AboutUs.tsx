@@ -1,17 +1,11 @@
 import type { ReactNode } from 'react';
 import { COMPANY } from '../data/company';
-import type { Statistic } from '../types';
+import { getCompletedProjectsCount, getYearsOfExperience } from '../utils/statistics';
 
 const ABOUT_IMAGES = {
   primary: '/img/about/01.png',
   secondary: '/img/about/02.png',
 } as const;
-
-const statistics: Statistic[] = [
-  { id: 1, label: 'مشروع مكتمل', value: '0', icon: 'projects' },
-  { id: 2, label: 'عميل سعيد', value: '0', icon: 'clients' },
-  { id: 3, label: 'سنوات خبرة', value: '0', icon: 'experience' },
-];
 
 function StatIcon({ type }: { type: string }) {
   const icons: Record<string, ReactNode> = {
@@ -35,6 +29,15 @@ function StatIcon({ type }: { type: string }) {
 }
 
 export default function AboutUs() {
+  const completedProjects = getCompletedProjectsCount();
+  const yearsOfExperience = getYearsOfExperience();
+
+  const statistics = [
+    { id: 1, label: 'مشروع مكتمل', value: String(completedProjects), icon: 'projects' },
+    { id: 2, label: 'عميل سعيد', value: String(COMPANY.happyClients), icon: 'clients' },
+    { id: 3, label: 'سنوات خبرة', value: String(yearsOfExperience), icon: 'experience' },
+  ] as const;
+
   return (
     <section id="about" className="py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

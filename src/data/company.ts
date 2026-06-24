@@ -11,4 +11,6 @@ export const COMPANY = {
   vision:
     'أن نكون الخيار الأول في المنطقة العربية للبرمجيات والتسويق الإلكتروني، ونقود نجاح أعمال عملائنا في العالم الرقمي.',
   email: 'aintishar2@gmail.com',
+  foundingYear: 2024,
+  happyClients: 0,
 } as const;

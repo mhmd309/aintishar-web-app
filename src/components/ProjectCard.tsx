@@ -64,32 +64,9 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <h3 className="card-title mb-2 line-clamp-1">{project.name}</h3>
 
         {project.description && (
-          <p className="mb-4 line-clamp-2 flex-1 text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+          <p className="line-clamp-2 flex-1 text-sm leading-relaxed text-gray-600 dark:text-gray-400">
             {project.description}
           </p>
-        )}
-
-        {hasDemo ? (
-          <a
-            href={project.demoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-secondary mt-auto w-full"
-          >
-            عرض التجربة
-            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-              />
-            </svg>
-          </a>
-        ) : (
-          <span className="btn-secondary mt-auto w-full cursor-not-allowed opacity-60" aria-disabled="true">
-            عرض التجربة
-          </span>
         )}
       </div>
     </article>
