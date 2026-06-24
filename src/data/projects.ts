@@ -18,7 +18,6 @@ export const projects: Project[] = [
     statuses: ['مدفوع', 'جديد'],
     demoUrl: '#',
     description: 'نظام متكامل لإدارة العملاء والقضايا والمواعيد للمكاتب القانونية.',
-    technologies: ['React.js', 'Next.js'],
   },
   {
     id: 2,
@@ -27,7 +26,6 @@ export const projects: Project[] = [
     statuses: ['مدفوع', 'جديد'],
     demoUrl: '#',
     description: 'لوحة تحكم لإدارة نتائج التحاليل ومتابعة الحالات والتقارير الطبية.',
-    technologies: ['React.js', 'Next.js', 'Node.js'],
   },
   {
     id: 3,
@@ -36,7 +34,6 @@ export const projects: Project[] = [
     statuses: ['مدفوع', 'قريباً'],
     demoUrl: '#',
     description: 'منصة تجارة إلكترونية مع إدارة المنتجات والطلبات والدفع الإلكتروني.',
-    technologies: ['React.js', 'Next.js'],
   },
   {
     id: 4,
@@ -45,7 +42,6 @@ export const projects: Project[] = [
     statuses: ['مجاني'],
     demoUrl: '#',
     description: 'موقع تفاعلي للمناسبات الدينية مع محتوى يومي وأذكار ومواقيت الصلاة.',
-    technologies: ['Javascript', 'Tailwind CSS'],
   },
   {
     id: 5,
@@ -54,7 +50,6 @@ export const projects: Project[] = [
     statuses: ['مدفوع', 'قريباً'],
     demoUrl: '#',
     description: 'تطبيق ويب لطلب الطعام وإدارة المطاعم والتوصيل في الوقت الفعلي.',
-    technologies: ['React', 'MySQL'],
   },
   {
     id: 6,
@@ -63,7 +58,6 @@ export const projects: Project[] = [
     statuses: ['مدفوع', 'محدّث'],
     demoUrl: '#',
     description: 'منصة محتوى إسلامي تشمل القرآن والأحاديث والفتاوى والدروس الصوتية.',
-    technologies: ['PHP', 'MySQL'],
   },
   {
     id: 7,
@@ -71,8 +65,7 @@ export const projects: Project[] = [
     image: WORK_IMAGES.w07,
     statuses: ['جديد'],
     demoUrl: '#',
-    description: 'منصة محتوى إسلامي تشمل القرآن والأحاديث والفتاوى والدروس الصوتية.',
-    technologies: ['PHP', 'MySQL'],
+    description: 'مشروع تجريبي لتطبيقات الموبايل',
   },
 ];
 

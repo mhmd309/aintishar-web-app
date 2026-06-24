@@ -7,7 +7,6 @@ export interface Project {
   statuses: ProjectStatus[];
   demoUrl: string;
   description?: string;
-  technologies?: string[];
 }
 
 export interface Slide {

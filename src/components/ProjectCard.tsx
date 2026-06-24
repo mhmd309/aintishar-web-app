@@ -68,19 +68,6 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           </p>
         )}
 
-        {project.technologies && project.technologies.length > 0 && (
-          <div className="mb-4 flex flex-wrap gap-1.5">
-            {project.technologies.map((tech) => (
-              <span
-                key={tech}
-                className="rounded-md bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-600 dark:bg-slate-700 dark:text-gray-300"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-        )}
-
         <a
           href={project.demoUrl}
           target="_blank"
