@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { slides } from '../data/slides';
+import { isSafeHref } from '../utils/security';
 
 const AUTO_PLAY_INTERVAL = 6000;
 
@@ -51,12 +52,16 @@ export default function HeroSlider() {
             <p className="mb-8 text-lg leading-relaxed text-gray-200 sm:text-xl">
               {slide.description}
             </p>
-            <a href={slide.ctaLink} className="btn-hero">
-              {slide.ctaText}
-              <svg className="h-5 w-5 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </a>
+            {isSafeHref(slide.ctaLink) ? (
+              <a href={slide.ctaLink} className="btn-hero">
+                {slide.ctaText}
+                <svg className="h-5 w-5 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+            ) : (
+              <span className="btn-hero cursor-default">{slide.ctaText}</span>
+            )}
           </div>
         </div>
       </div>

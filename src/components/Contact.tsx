@@ -6,6 +6,12 @@ import {
   submitContactForm,
 } from '../services/contactForm';
 import type { ContactFormData, FormErrors } from '../types';
+import {
+  canSubmitContactForm,
+  CONTACT_LIMITS,
+  markContactFormSubmitted,
+  sanitizeText,
+} from '../utils/security';
 import ContactPopup, { type PopupType } from './ContactPopup';
 
 const EMAIL = COMPANY.email;
@@ -18,23 +24,32 @@ interface PopupState {
 
 function validateForm(data: ContactFormData): FormErrors {
   const errors: FormErrors = {};
+  const name = sanitizeText(data.name);
+  const email = sanitizeText(data.email);
+  const message = sanitizeText(data.message, true);
 
-  if (!data.name.trim()) {
+  if (!name) {
     errors.name = 'الاسم مطلوب';
-  } else if (data.name.trim().length < 2) {
+  } else if (name.length < 2) {
     errors.name = 'يجب أن يكون الاسم حرفين على الأقل';
+  } else if (name.length > CONTACT_LIMITS.name) {
+    errors.name = `الاسم يجب ألا يتجاوز ${CONTACT_LIMITS.name} حرفاً`;
   }
 
-  if (!data.email.trim()) {
+  if (!email) {
     errors.email = 'البريد الإلكتروني مطلوب';
-  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     errors.email = 'يرجى إدخال بريد إلكتروني صالح';
+  } else if (email.length > CONTACT_LIMITS.email) {
+    errors.email = 'البريد الإلكتروني طويل جداً';
   }
 
-  if (!data.message.trim()) {
+  if (!message) {
     errors.message = 'الرسالة مطلوبة';
-  } else if (data.message.trim().length < 10) {
+  } else if (message.length < 10) {
     errors.message = 'يجب أن تكون الرسالة 10 أحرف على الأقل';
+  } else if (message.length > CONTACT_LIMITS.message) {
+    errors.message = `الرسالة يجب ألا تتجاوز ${CONTACT_LIMITS.message} حرفاً`;
   }
 
   return errors;
@@ -53,6 +68,7 @@ export default function Contact() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [popup, setPopup] = useState<PopupState | null>(null);
+  const [honeypot, setHoneypot] = useState('');
 
   const closePopup = useCallback(() => setPopup(null), []);
 
@@ -67,6 +83,28 @@ export default function Contact() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
+    if (honeypot.trim()) {
+      setFormData({ name: '', email: '', message: '' });
+      setErrors({});
+      setHoneypot('');
+      setPopup({
+        type: 'success',
+        title: 'تم الإرسال بنجاح!',
+        message: 'شكراً لتواصلك معنا. استلمنا رسالتك وسنرد عليك في أقرب وقت ممكن.',
+      });
+      return;
+    }
+
+    if (!canSubmitContactForm()) {
+      setPopup({
+        type: 'error',
+        title: 'انتظر قليلاً',
+        message: 'يرجى الانتظار نصف دقيقة قبل إرسال رسالة أخرى.',
+      });
+      return;
+    }
+
     const validationErrors = validateForm(formData);
 
     if (Object.keys(validationErrors).length > 0) {
@@ -83,6 +121,7 @@ export default function Contact() {
 
     try {
       await submitContactForm(formData);
+      markContactFormSubmitted();
       setFormData({ name: '', email: '', message: '' });
       setErrors({});
       setPopup({
@@ -94,9 +133,9 @@ export default function Contact() {
       if (error instanceof ContactFormConfigError) {
         setPopup({
           type: 'error',
-          title: 'الإرسال غير مفعّل',
+          title: 'الإرسال غير متاح',
           message:
-            'لم يتم إعداد EmailJS بعد. أنشئ ملف .env وأضف SERVICE_ID و TEMPLATE_ID و PUBLIC_KEY من emailjs.com',
+            'خدمة الإرسال غير متاحة حالياً. يرجى التواصل معنا مباشرة عبر البريد الإلكتروني.',
         });
       } else if (error instanceof ContactFormSubmitError) {
         setPopup({
@@ -195,8 +234,24 @@ export default function Contact() {
               <form
                 onSubmit={handleSubmit}
                 noValidate
-                className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm dark:border-gray-700 dark:bg-slate-800"
+                className="relative rounded-2xl border border-gray-200 bg-white p-8 shadow-sm dark:border-gray-700 dark:bg-slate-800"
               >
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute -left-[9999px] h-0 w-0 overflow-hidden opacity-0"
+                >
+                  <label htmlFor="website">Website</label>
+                  <input
+                    id="website"
+                    name="website"
+                    type="text"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
+
                 <div className="mb-6">
                   <label htmlFor="name" className="text-label mb-2 block">
                     الاسم <span className="text-red-500">*</span>
@@ -208,6 +263,7 @@ export default function Contact() {
                     onChange={(e) => handleChange('name', e.target.value)}
                     className={`input-field ${errors.name ? 'input-field-error' : ''}`}
                     placeholder="أدخل اسمك الكامل"
+                    maxLength={CONTACT_LIMITS.name}
                     disabled={isSubmitting}
                   />
                   {errors.name && <p className="mt-1.5 text-sm text-red-500">{errors.name}</p>}
@@ -224,6 +280,7 @@ export default function Contact() {
                     onChange={(e) => handleChange('email', e.target.value)}
                     className={`input-field ${errors.email ? 'input-field-error' : ''}`}
                     placeholder="example@email.com"
+                    maxLength={CONTACT_LIMITS.email}
                     dir="ltr"
                     disabled={isSubmitting}
                   />
@@ -241,6 +298,7 @@ export default function Contact() {
                     onChange={(e) => handleChange('message', e.target.value)}
                     className={`input-field resize-none ${errors.message ? 'input-field-error' : ''}`}
                     placeholder="اكتب رسالتك هنا..."
+                    maxLength={CONTACT_LIMITS.message}
                     disabled={isSubmitting}
                   />
                   {errors.message && <p className="mt-1.5 text-sm text-red-500">{errors.message}</p>}

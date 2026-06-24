@@ -13,11 +13,44 @@ export default function Navbar() {
   const { isDark, toggleTheme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState(
+    () => window.location.hash || '#home',
+  );
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    const updateActiveSection = () => {
+      const offset = 120;
+      const scrollPos = window.scrollY + offset;
+      let current = '#home';
+
+      for (const link of navLinks) {
+        const section = document.getElementById(link.href.slice(1));
+        if (section && section.offsetTop <= scrollPos) {
+          current = link.href;
+        }
+      }
+
+      setActiveSection(current);
+    };
+
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+      updateActiveSection();
+    };
+
+    const handleHashChange = () => {
+      if (window.location.hash) {
+        setActiveSection(window.location.hash);
+      }
+    };
+
+    handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('hashchange', handleHashChange);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('hashchange', handleHashChange);
+    };
   }, []);
 
   useEffect(() => {
@@ -27,13 +60,28 @@ export default function Navbar() {
     };
   }, [isMenuOpen]);
 
-  const handleNavClick = () => setIsMenuOpen(false);
+  const handleNavClick = (href: string) => {
+    setActiveSection(href);
+    setIsMenuOpen(false);
+  };
 
   const isSolidHeader = isScrolled || isMenuOpen;
 
-  const linkClass = isSolidHeader
-    ? 'text-gray-600 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400'
-    : 'text-white hover:text-primary-200';
+  const getLinkClass = (isActive: boolean) => {
+    if (isSolidHeader) {
+      return isActive
+        ? 'text-primary-600 font-bold dark:text-primary-400'
+        : 'text-gray-600 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400';
+    }
+    return isActive
+      ? 'text-white font-bold'
+      : 'text-white/80 hover:text-primary-200';
+  };
+
+  const getMobileLinkClass = (isActive: boolean) =>
+    isActive
+      ? 'block rounded-lg px-4 py-3 text-base font-bold bg-primary-50 text-primary-700 dark:bg-primary-950/50 dark:text-primary-400'
+      : 'block rounded-lg px-4 py-3 text-base font-medium text-gray-800 transition-colors hover:bg-primary-50 hover:text-primary-700 dark:text-gray-100 dark:hover:bg-primary-950/50 dark:hover:text-primary-400';
 
   const iconBtnClass = isSolidHeader ? 'btn-nav-icon-scrolled' : 'btn-nav-icon-hero';
 
@@ -49,13 +97,21 @@ export default function Navbar() {
         <Logo variant={isSolidHeader ? 'default' : 'light'} />
 
         <ul className="hidden items-center gap-8 md:flex">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <a href={link.href} className={`text-sm font-medium transition-colors ${linkClass}`}>
-                {link.label}
-              </a>
-            </li>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = activeSection === link.href;
+            return (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  onClick={() => setActiveSection(link.href)}
+                  aria-current={isActive ? 'page' : undefined}
+                  className={`text-sm font-medium transition-colors ${getLinkClass(isActive)}`}
+                >
+                  {link.label}
+                </a>
+              </li>
+            );
+          })}
         </ul>
 
         <div className="flex items-center gap-3">
@@ -120,17 +176,21 @@ export default function Navbar() {
         }`}
       >
         <ul className="flex flex-col gap-1 px-4 py-4">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                onClick={handleNavClick}
-                className="block rounded-lg px-4 py-3 text-base font-medium text-gray-800 transition-colors hover:bg-primary-50 hover:text-primary-700 dark:text-gray-100 dark:hover:bg-primary-950/50 dark:hover:text-primary-400"
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = activeSection === link.href;
+            return (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  onClick={() => handleNavClick(link.href)}
+                  aria-current={isActive ? 'page' : undefined}
+                  className={getMobileLinkClass(isActive)}
+                >
+                  {link.label}
+                </a>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </header>

@@ -1,4 +1,5 @@
 import { COMPANY } from '../data/company';
+import { sanitizeText } from '../utils/security';
 import type { ContactFormData } from '../types';
 
 /**
@@ -44,9 +45,9 @@ function buildMessageBody(
 }
 
 export function buildEmailJsParams(data: ContactFormData): EmailJsTemplateParams {
-  const name = data.name.trim();
-  const email = data.email.trim();
-  const userMessage = data.message.trim();
+  const name = sanitizeText(data.name);
+  const email = sanitizeText(data.email);
+  const userMessage = sanitizeText(data.message, true);
   const sentAt = formatSentAt(new Date());
   const source = `موقع ${COMPANY.fullName}`;
 

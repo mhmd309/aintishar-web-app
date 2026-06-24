@@ -1,5 +1,6 @@
 import emailjs from '@emailjs/browser';
 import { buildEmailJsParams } from './emailTemplate';
+import { sanitizeText } from '../utils/security';
 import type { ContactFormData } from '../types';
 
 export class ContactFormConfigError extends Error {
@@ -26,7 +27,12 @@ export async function submitContactForm(data: ContactFormData): Promise<void> {
   }
 
   try {
-    const templateParams = buildEmailJsParams(data);
+    const sanitized: ContactFormData = {
+      name: sanitizeText(data.name),
+      email: sanitizeText(data.email),
+      message: sanitizeText(data.message, true),
+    };
+    const templateParams = buildEmailJsParams(sanitized);
 
     const result = await emailjs.send(
       serviceId,
@@ -40,9 +46,6 @@ export async function submitContactForm(data: ContactFormData): Promise<void> {
     }
   } catch (error) {
     if (error instanceof ContactFormSubmitError) throw error;
-
-    const message =
-      error instanceof Error ? error.message : 'تعذّر إرسال الرسالة.';
-    throw new ContactFormSubmitError(message); 
+    throw new ContactFormSubmitError('فشل إرسال الرسالة. حاول مرة أخرى.');
   }
 }
