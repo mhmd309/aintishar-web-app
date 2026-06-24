@@ -3,7 +3,7 @@ import type { Slide } from '../types';
 export const slides: Slide[] = [
   {
     id: 1,
-    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80',
+    image: '/img/slide/01.jpg',
     heading: 'إنتشار للبرمجيات والتسويق الإلكتروني',
     description:
       'نطوّر حلولاً برمجية مبتكرة ونُدير حملاتك التسويقية الرقمية لنُساعدك على النمو والوصول لعملائك بفعالية.',
@@ -12,7 +12,7 @@ export const slides: Slide[] = [
   },
   {
     id: 2,
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&q=80',
+    image: '/img/slide/02.jpg',
     heading: 'برمجيات احترافية وحلول رقمية',
     description:
       'من تطبيقات الويب والأنظمة السحابية إلى المتاجر الإلكترونية — نبني منتجات تقنية تلبي احتياجات عملك.',
@@ -21,7 +21,7 @@ export const slides: Slide[] = [
   },
   {
     id: 3,
-    image: 'https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=1920&q=80',
+    image: '/img/slide/03.jpg',
     heading: 'تسويق إلكتروني يحقق النتائج',
     description:
       'إدارة حملات السوشيال ميديا، تحسين محركات البحث، والإعلانات المدفوعة لبناء علامتك التجارية وتوسيع انتشارك.',
