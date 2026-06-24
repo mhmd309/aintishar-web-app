@@ -1,14 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
 import { slides } from '../data/slides';
-import slide01 from '../../public/img/slide/01.jpg';
-import slide02 from '../../public/img/slide/02.jpg';
-import slide03 from '../../public/img/slide/03.jpg';
-
-const SLIDE_IMAGES: Record<number, string> = {
-  1: slide01,
-  2: slide02,
-  3: slide03,
-};
 
 const AUTO_PLAY_INTERVAL = 6000;
 
@@ -46,7 +37,7 @@ export default function HeroSlider() {
           }`}
           aria-hidden={index !== current}
         >
-          <img src={SLIDE_IMAGES[s.id]} alt="" className="h-full w-full object-cover" />
+          <img src={s.image} alt="" className="h-full w-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-l from-slate-900/90 via-slate-900/65 to-slate-900/35" />
         </div>
       ))}

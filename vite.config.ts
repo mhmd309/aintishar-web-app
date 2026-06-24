@@ -6,11 +6,14 @@ export default defineConfig({
   plugins: [react()],
   server: {
     watch: {
-      // على Windows: ملفات public (خصوصاً الصور) تسبب EBUSY وتوقف السيرفر
-      // الصور ثابتة ولا تحتاج HMR — حدّث المتصفح يدوياً بعد تغييرها
-      ignored: ['**/public/**'],
+      // على Windows: مراقبة public (خصوصاً الصور) تسبب EBUSY وتوقف السيرفر
+      ignored: ['**/public/**', '**/node_modules/**', '**/.git/**', '**/dist/**'],
       usePolling: true,
       interval: 1000,
+      awaitWriteFinish: {
+        stabilityThreshold: 500,
+        pollInterval: 100,
+      },
     },
   },
 });
