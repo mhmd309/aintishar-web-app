@@ -14,8 +14,6 @@ import {
 } from '../utils/security';
 import ContactPopup, { type PopupType } from './ContactPopup';
 
-const EMAIL = COMPANY.email;
-
 interface PopupState {
   type: PopupType;
   title: string;
@@ -173,7 +171,7 @@ export default function Contact() {
                 <h3 className="card-heading mb-6">معلومات التواصل</h3>
 
                 <a
-                  href={`mailto:${EMAIL}`}
+                  href={`mailto:${COMPANY.email}`}
                   className="group flex items-center gap-4 rounded-xl border border-gray-100 bg-gray-50 p-4 transition-all hover:border-primary-200 hover:bg-primary-50 dark:border-gray-700 dark:bg-slate-900 dark:hover:border-primary-700 dark:hover:bg-primary-950/40"
                 >
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary-100 text-primary-700 dark:bg-primary-950/60 dark:text-primary-400">
@@ -189,7 +187,7 @@ export default function Contact() {
                   <div>
                     <p className="text-sm text-muted">البريد الإلكتروني</p>
                     <p className="font-semibold text-gray-900 transition-colors group-hover:text-primary-700 dark:text-white dark:group-hover:text-primary-400">
-                      {EMAIL}
+                      {COMPANY.email}
                     </p>
                   </div>
                 </a>

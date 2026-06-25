@@ -19,11 +19,12 @@ export default function Projects() {
   }, [search, statusFilter]);
 
   const totalPages = Math.max(1, Math.ceil(filteredProjects.length / PROJECTS_PER_PAGE));
+  const effectivePage = Math.min(currentPage, totalPages);
 
   const paginatedProjects = useMemo(() => {
-    const start = (currentPage - 1) * PROJECTS_PER_PAGE;
+    const start = (effectivePage - 1) * PROJECTS_PER_PAGE;
     return filteredProjects.slice(start, start + PROJECTS_PER_PAGE);
-  }, [filteredProjects, currentPage]);
+  }, [filteredProjects, effectivePage]);
 
   const handleSearchChange = (value: string) => {
     setSearch(value);
@@ -103,8 +104,8 @@ export default function Projects() {
           <div className="mt-12 flex items-center justify-center gap-2">
             <button
               type="button"
-              onClick={() => goToPage(currentPage - 1)}
-              disabled={currentPage === 1}
+              onClick={() => goToPage(effectivePage - 1)}
+              disabled={effectivePage === 1}
               aria-label="الصفحة السابقة"
               className="btn-icon"
             >
@@ -119,8 +120,8 @@ export default function Projects() {
                 type="button"
                 onClick={() => goToPage(page)}
                 aria-label={`الصفحة ${page}`}
-                aria-current={page === currentPage ? 'page' : undefined}
-                className={page === currentPage ? 'btn-icon-active' : 'btn-icon'}
+                aria-current={page === effectivePage ? 'page' : undefined}
+                className={page === effectivePage ? 'btn-icon-active' : 'btn-icon'}
               >
                 {page}
               </button>
@@ -128,8 +129,8 @@ export default function Projects() {
 
             <button
               type="button"
-              onClick={() => goToPage(currentPage + 1)}
-              disabled={currentPage === totalPages}
+              onClick={() => goToPage(effectivePage + 1)}
+              disabled={effectivePage === totalPages}
               aria-label="الصفحة التالية"
               className="btn-icon"
             >

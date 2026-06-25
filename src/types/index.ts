@@ -18,13 +18,6 @@ export interface Slide {
   ctaLink: string;
 }
 
-export interface Statistic {
-  id: number;
-  label: string;
-  value: string;
-  icon: string;
-}
-
 export interface ContactFormData {
   name: string;
   email: string;

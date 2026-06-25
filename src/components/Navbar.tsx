@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Logo from './Logo';
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '../hooks/useTheme';
 
 const navLinks = [
   { href: '#home', label: 'الرئيسية' },

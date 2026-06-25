@@ -7,6 +7,22 @@ export const CONTACT_LIMITS = {
 const SUBMIT_COOLDOWN_MS = 30_000;
 const CONTACT_SUBMIT_KEY = 'contact-last-submit';
 
+function stripUnsafeControlChars(value: string, keepNewlines: boolean): string {
+  let output = '';
+  for (const char of value) {
+    const code = char.charCodeAt(0);
+    if (code === 0x7f) continue;
+    if (code < 0x20) {
+      if (keepNewlines && (code === 0x09 || code === 0x0a)) {
+        output += char;
+      }
+      continue;
+    }
+    output += char;
+  }
+  return output;
+}
+
 export function sanitizeText(value: string, allowNewlines = false): string {
   let result = value.replace(/\0/g, '');
 
@@ -16,7 +32,7 @@ export function sanitizeText(value: string, allowNewlines = false): string {
     result = result.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
   }
 
-  return result.replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, '').trim();
+  return stripUnsafeControlChars(result, allowNewlines).trim();
 }
 
 export function isSafeHref(href: string): boolean {

@@ -54,7 +54,7 @@ export default function Footer() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
           {/* العلامة التجارية */}
           <div className="lg:col-span-5">
-            <Logo showTagline variant="light" />
+            <Logo variant="light" />
             <p className="mt-5 max-w-md text-sm leading-relaxed text-gray-400">
               {COMPANY.description}
             </p>

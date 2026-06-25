@@ -36,10 +36,13 @@ function buildMessageBody(
 ): string {
   return [
     `الاسم: ${name}`,
+    '',
     `البريد الإلكتروني: ${email}`,
+    '',
     `الرسالة: ${userMessage}`,
     '',
     `وقت الإرسال: ${sentAt}`,
+    '',
     `المصدر: ${source}`,
   ].join('\n');
 }
