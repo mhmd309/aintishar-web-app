@@ -12,7 +12,7 @@ const quickLinks = [
 
 const socialLinks: (SocialLink & { className: string })[] = [
   { name: 'فيسبوك', url: 'https://facebook.com', icon: 'facebook', className: 'footer-social-facebook' },
-  { name: 'واتساب', url: 'https://wa.me/01024704900', icon: 'whatsapp', className: 'footer-social-whatsapp' },
+  { name: 'واتساب', url: 'https://wa.me/+201024704900', icon: 'whatsapp', className: 'footer-social-whatsapp' },
 ];
 
 function SocialIcon({ type }: { type: SocialLink['icon'] }) {
