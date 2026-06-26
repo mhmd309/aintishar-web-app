@@ -89,7 +89,7 @@ export default function Navbar() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         isSolidHeader
-          ? 'border-b border-gray-200/70 bg-white/95 shadow-sm backdrop-blur-lg dark:border-gray-800/70 dark:bg-slate-900/95'
+          ? 'bg-white/95 shadow-sm backdrop-blur-lg dark:bg-slate-900/95'
           : 'bg-transparent'
       }`}
     >
@@ -163,7 +163,7 @@ export default function Navbar() {
       </nav>
 
       <div
-        className={`fixed inset-0 z-[55] bg-slate-900/50 transition-opacity md:hidden ${
+        className={`fixed inset-x-0 bottom-0 top-[72px] z-[55] bg-slate-900/50 transition-opacity md:hidden ${
           isMenuOpen ? 'opacity-100' : 'pointer-events-none opacity-0'
         }`}
         onClick={() => setIsMenuOpen(false)}
@@ -171,7 +171,7 @@ export default function Navbar() {
       />
 
       <div
-        className={`fixed inset-x-0 top-[73px] z-[58] max-h-[calc(100dvh-73px)] overflow-y-auto border-b border-gray-200 bg-white shadow-lg transition-all duration-300 md:hidden dark:border-gray-800 dark:bg-slate-900 ${
+        className={`fixed inset-x-0 top-[72px] z-[58] max-h-[calc(100dvh-72px)] overflow-y-auto border-b border-gray-200 bg-white shadow-lg transition-all duration-300 md:hidden dark:border-gray-800 dark:bg-slate-900 ${
           isMenuOpen ? 'visible opacity-100' : 'pointer-events-none invisible opacity-0'
         }`}
       >
