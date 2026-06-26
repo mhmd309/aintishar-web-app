@@ -178,32 +178,3 @@
     transform: translateY(0);
   }
 }
-
-.stats-marquee {
-  container-type: inline-size;
-  overflow: hidden;
-  width: 100%;
-}
-
-.stats-marquee-track {
-  display: flex;
-  width: max-content;
-  animation: stats-marquee-scroll 24s linear infinite;
-  direction: ltr;
-  will-change: transform;
-}
-
-.stats-marquee-item {
-  flex: 0 0 auto;
-  width: calc(100cqw / var(--stats-count, 3));
-}
-
-@keyframes stats-marquee-scroll {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-
-  to {
-    transform: translate3d(-50%, 0, 0);
-  }
-}

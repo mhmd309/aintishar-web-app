@@ -1,8 +1,6 @@
 import type { ReactNode } from 'react';
-import StatsMarquee from './StatsMarquee';
 import { COMPANY } from '../data/company';
 import { getCompletedProjectsCount, getYearsOfExperience } from '../utils/statistics';
-
 const ABOUT_IMAGES = {
   primary: '/img/about/01.png',
   secondary: '/img/about/02.png',
@@ -39,7 +37,7 @@ function StatCard({
   icon: string;
 }) {
   return (
-    <div className="p-8 text-center">
+    <div className="flex w-full flex-col items-center justify-center p-8 text-center">
       <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-white/20 text-white backdrop-blur-sm">
         <StatIcon type={icon} />
       </div>
@@ -119,8 +117,8 @@ export default function AboutUs() {
           </div>
         </div>
 
-        <div className="mt-16">
-          <StatsMarquee>
+        <div className="mt-16 overflow-hidden rounded-2xl bg-gradient-to-r from-primary-600 via-primary-500 to-primary-700 shadow-lg shadow-primary-500/25 dark:from-primary-900 dark:via-primary-800 dark:to-primary-700">
+          <div className="grid grid-cols-1 lg:grid-cols-3">
             {statistics.map((stat) => (
               <StatCard
                 key={stat.id}
@@ -129,9 +127,8 @@ export default function AboutUs() {
                 icon={stat.icon}
               />
             ))}
-          </StatsMarquee>
+          </div>
         </div>
       </div>
-    </section>
-  );
+    </section>  );
 }
