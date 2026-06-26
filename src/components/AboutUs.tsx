@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import StatsMarquee from './StatsMarquee';
 import { COMPANY } from '../data/company';
 import { getCompletedProjectsCount, getYearsOfExperience } from '../utils/statistics';
 
@@ -26,6 +27,26 @@ function StatIcon({ type }: { type: string }) {
     ),
   };
   return <>{icons[type]}</>;
+}
+
+function StatCard({
+  value,
+  label,
+  icon,
+}: {
+  value: string;
+  label: string;
+  icon: string;
+}) {
+  return (
+    <div className="p-8 text-center">
+      <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary-50 text-primary-700 dark:bg-primary-950/60 dark:text-primary-400">
+        <StatIcon type={icon} />
+      </div>
+      <p className="mb-1 text-4xl font-bold text-gray-900 dark:text-white">{value}</p>
+      <p className="text-muted">{label}</p>
+    </div>
+  );
 }
 
 export default function AboutUs() {
@@ -98,19 +119,17 @@ export default function AboutUs() {
           </div>
         </div>
 
-        <div className="mt-16 grid gap-6 sm:grid-cols-3">
-          {statistics.map((stat) => (
-            <div
-              key={stat.id}
-              className="group rounded-2xl border border-gray-200 bg-white p-8 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary-200 hover:shadow-lg dark:border-gray-700 dark:bg-slate-800 dark:hover:border-primary-700"
-            >
-              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary-50 text-primary-700 transition-colors group-hover:bg-primary-600 group-hover:text-white dark:bg-primary-950/60 dark:text-primary-400">
-                <StatIcon type={stat.icon} />
-              </div>
-              <p className="mb-1 text-4xl font-bold text-gray-900 dark:text-white">{stat.value}</p>
-              <p className="text-muted">{stat.label}</p>
-            </div>
-          ))}
+        <div className="mt-16">
+          <StatsMarquee>
+            {statistics.map((stat) => (
+              <StatCard
+                key={stat.id}
+                value={stat.value}
+                label={stat.label}
+                icon={stat.icon}
+              />
+            ))}
+          </StatsMarquee>
         </div>
       </div>
     </section>
