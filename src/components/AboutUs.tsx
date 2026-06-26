@@ -40,11 +40,11 @@ function StatCard({
 }) {
   return (
     <div className="p-8 text-center">
-      <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary-50 text-primary-700 dark:bg-primary-950/60 dark:text-primary-400">
+      <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-white/20 text-white backdrop-blur-sm">
         <StatIcon type={icon} />
       </div>
-      <p className="mb-1 text-4xl font-bold text-gray-900 dark:text-white">{value}</p>
-      <p className="text-muted">{label}</p>
+      <p className="mb-1 text-4xl font-bold text-white">{value}</p>
+      <p className="text-primary-100">{label}</p>
     </div>
   );
 }
