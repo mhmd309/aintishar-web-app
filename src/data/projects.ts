@@ -4,10 +4,6 @@ const WORK_IMAGES = {
   w01: '/img/work/w01.png',
   w02: '/img/work/w02.png',
   w03: '/img/work/w03.png',
-  w04: '/img/work/w04.png',
-  w05: '/img/work/w05.png',
-  w06: '/img/work/w06.png',
-  w07: '/img/work/w07.png',
 } as const;
 
 export const projects: Project[] = [
@@ -34,30 +30,6 @@ export const projects: Project[] = [
     statuses: ['مدفوع', 'جديد'],
     demoUrl: '#',
     description: 'منصة تجارة إلكترونية مع إدارة المنتجات والطلبات والدفع الإلكتروني.',
-  },
-  {
-    id: 4,
-    name: 'موقع رمضان كريم',
-    image: WORK_IMAGES.w04,
-    statuses: ['مجاني'],
-    demoUrl: 'https://ramadankareem23.iceiy.com/',
-    description: 'موقع تفاعلي للمناسبات الدينية مع محتوى يومي وأذكار ومواقيت الصلاة.',
-  },
-  {
-    id: 5,
-    name: 'موقع اطعمتك',
-    image: WORK_IMAGES.w05,
-    statuses: ['مجاني'],
-    demoUrl: 'https://mhmd309.github.io/Cookster/',
-    description: 'تطبيق ويب لطلب الطعام وإدارة المطاعم والتوصيل في الوقت الفعلي.',
-  },
-  {
-    id: 6,
-    name: 'موقع إسلامى',
-    image: WORK_IMAGES.w06,
-    statuses: ['مجاني', 'جديد'],
-    demoUrl: 'https://mhmd309.github.io/Eslami/',
-    description: 'منصة محتوى إسلامي تشمل القرآن والأحاديث والفتاوى والدروس الصوتية.',
   },
 ];
 
