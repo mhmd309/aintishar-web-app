@@ -20,7 +20,7 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Tajawal', 'system-ui', 'sans-serif'],
+        sans: ['Noto Sans Arabic', 'system-ui', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-out forwards',
