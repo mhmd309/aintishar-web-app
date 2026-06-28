@@ -61,13 +61,13 @@ export default function AboutUs() {
   return (
     <section id="about" className="py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <motion.div initial={{ opacity: 0, y: -30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="mb-16 text-center">
+        <motion.div initial={{ opacity: 0, y: -30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1.0 }} className="mb-16 text-center">
           <h2 className="section-title mb-4">من نحن</h2>
           <p className="section-subtitle mx-auto max-w-2xl">{COMPANY.aboutSubtitle}</p>
         </motion.div>
 
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-          <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="space-y-8">
+          <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 1.0 }} className="space-y-8">
             <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm dark:border-gray-700 dark:bg-slate-800">
               <h3 className="card-heading mb-4">عن الشركة</h3>
               <p className="text-body">{COMPANY.description}</p>
@@ -101,7 +101,7 @@ export default function AboutUs() {
             </div>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="relative">
+          <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 1.0 }} className="relative">
             <div className="grid gap-4">
               <img
                 src={ABOUT_IMAGES.primary}
@@ -118,7 +118,7 @@ export default function AboutUs() {
           </motion.div>
         </div>
 
-        <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="mt-16 overflow-hidden rounded-2xl bg-gradient-to-r from-primary-600 via-primary-500 to-primary-700 shadow-lg shadow-primary-500/25 dark:from-primary-900 dark:via-primary-800 dark:to-primary-700">
+        <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1.0 }} className="mt-16 overflow-hidden rounded-2xl bg-gradient-to-r from-primary-600 via-primary-500 to-primary-700 shadow-lg shadow-primary-500/25 dark:from-primary-900 dark:via-primary-800 dark:to-primary-700">
           <div className="grid grid-cols-1 lg:grid-cols-3">
             {statistics.map((stat) => (
               <StatCard

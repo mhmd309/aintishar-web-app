@@ -159,7 +159,7 @@ export default function Contact() {
     <>
       <section id="contact" className="bg-gray-50 py-20 dark:bg-slate-900/50">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <motion.div initial={{ opacity: 0, y: -30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="mb-12 text-center">
+          <motion.div initial={{ opacity: 0, y: -30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1.0 }} className="mb-12 text-center">
             <h2 className="section-title mb-4">تواصل معنا</h2>
             <p className="section-subtitle mx-auto max-w-2xl">
               نحن هنا للإجابة على استفساراتك ومساعدتك في تحقيق أهدافك
@@ -167,7 +167,7 @@ export default function Contact() {
           </motion.div>
 
           <div className="grid gap-12 lg:grid-cols-5">
-            <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="lg:col-span-2">
+            <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 1.0 }} className="lg:col-span-2">
               <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm dark:border-gray-700 dark:bg-slate-800">
                 <h3 className="card-heading mb-6">معلومات التواصل</h3>
 
@@ -229,7 +229,7 @@ export default function Contact() {
               </div>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="lg:col-span-3">
+            <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 1.0 }} className="lg:col-span-3">
               <form
                 onSubmit={handleSubmit}
                 noValidate

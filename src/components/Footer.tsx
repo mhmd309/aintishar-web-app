@@ -52,7 +52,7 @@ export default function Footer() {
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="grid gap-12 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
+        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1.0 }} className="grid gap-12 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
           {/* العلامة التجارية */}
           <div className="lg:col-span-5">
             <Logo variant="light" />
