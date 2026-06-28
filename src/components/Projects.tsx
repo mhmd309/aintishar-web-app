@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { motion } from 'framer-motion';
 import { ALL_STATUSES, PROJECTS_PER_PAGE, projects } from '../data/projects';
 import type { ProjectStatus } from '../types';
 import ProjectCard from './ProjectCard';
@@ -43,14 +44,14 @@ export default function Projects() {
   return (
     <section id="projects" className="bg-gray-50 py-20 dark:bg-slate-900/50">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-12 text-center">
+        <motion.div initial={{ opacity: 0, y: -30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="mb-12 text-center">
           <h2 className="section-title mb-4">مشاريعنا</h2>
           <p className="section-subtitle mx-auto max-w-2xl">
             استكشف مشاريعنا في البرمجيات والتسويق الإلكتروني المصممة لتحقيق أهداف عملك
           </p>
-        </div>
+        </motion.div>
 
-        <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="relative flex-1 sm:max-w-md">
             <svg
               className="absolute right-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400"
@@ -86,14 +87,14 @@ export default function Projects() {
               </button>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {paginatedProjects.length > 0 ? (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {paginatedProjects.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}
-          </div>
+          </motion.div>
         ) : (
           <div className="rounded-2xl border border-dashed border-gray-300 bg-white py-16 text-center dark:border-gray-600 dark:bg-slate-800">
             <p className="text-lg text-muted">لم يتم العثور على مشاريع مطابقة</p>

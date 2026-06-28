@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { motion } from 'framer-motion';
 import Logo from './Logo';
 import { COMPANY } from '../data/company';
 import type { SocialLink } from '../types';
@@ -51,7 +52,7 @@ export default function Footer() {
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
+        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="grid gap-12 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
           {/* العلامة التجارية */}
           <div className="lg:col-span-5">
             <Logo variant="light" />
@@ -123,7 +124,7 @@ export default function Footer() {
               ))}
             </div>
           </div>
-        </div>
+        </motion.div>
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row">
           <p className="text-center text-sm text-gray-500 sm:text-right">
              جميع الحقوق محفوظة © {currentYear} {COMPANY.fullName}
