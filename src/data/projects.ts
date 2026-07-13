@@ -4,6 +4,7 @@ const WORK_IMAGES = {
   w01: '/img/work/w01.png',
   w02: '/img/work/w02.png',
   w03: '/img/work/w03.png',
+  w04: '/img/work/w04.png',
 } as const;
 
 export const projects: Project[] = [
@@ -30,6 +31,14 @@ export const projects: Project[] = [
     statuses: ['مدفوع', 'جديد'],
     demoUrl: '#',
     description: 'منصة تجارة إلكترونية مع إدارة المنتجات والطلبات والدفع الإلكتروني.',
+  },
+  {
+    id: 4,
+    name: 'نظام إدارة الصيدليات',
+    image: WORK_IMAGES.w04,
+    statuses: ['مدفوع', 'قريباً'],
+    demoUrl: '#',
+    description: 'نظام سحابي متعدد الصيدليات يجمع البيع، المخزون، الخزينة، والإدارة في منصة واحدة — سهل الاستخدام ومصمم للعمل اليومي.',
   },
 ];
 
