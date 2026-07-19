@@ -9,7 +9,7 @@ const WORK_IMAGES = {
 export const projects: Project[] = [
   {
     id: 1,
-    name: 'موقع لإدارة المحاميات',
+    name: 'موقع لإدارة المحاماه',
     image: WORK_IMAGES.w01,
     statuses: ['مدفوع', 'جديد'],
     demoUrl: '#',
