@@ -91,7 +91,7 @@ export default function HeroSlider() {
 
     <section 
       id="home" 
-      className="relative h-screen min-h-[600px] w-full overflow-hidden cursor-grab active:cursor-grabbing"
+      className="relative h-screen min-h-[600px] w-full overflow-hidden bg-[#071326] cursor-grab active:cursor-grabbing"
       onTouchStart={handleDragStart}
       onTouchMove={handleDragMove}
       onTouchEnd={handleDragEnd}
@@ -117,7 +117,7 @@ export default function HeroSlider() {
 
           <img src={s.image} alt="" className="h-full w-full object-cover" />
 
-          <div className="absolute inset-0 bg-gradient-to-l from-slate-900/90 via-slate-900/65 to-slate-900/35" />
+          <div className="absolute inset-0 bg-gradient-to-l from-[#071326]/95 via-[#071326]/70 to-[#071326]/25" />
 
         </div>
 
@@ -128,6 +128,7 @@ export default function HeroSlider() {
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
 
           <div key={slide.id} className="max-w-2xl animate-fade-in pointer-events-auto">
+            <div className="mb-5 h-1.5 w-20 rounded-full bg-primary-500 shadow-lg shadow-primary-500/40" />
 
             <h1 className="mb-6 text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
 

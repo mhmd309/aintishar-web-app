@@ -89,8 +89,8 @@ export default function Navbar() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         isSolidHeader
-          ? 'bg-white/95 shadow-sm backdrop-blur-lg dark:bg-slate-900/95'
-          : 'bg-transparent'
+          ? 'border-b border-primary-100 bg-white/95 shadow-sm backdrop-blur-lg dark:border-primary-900/50 dark:bg-[#071326]/95'
+          : 'border-b border-white/10 bg-[#071326]/20 backdrop-blur-md'
       }`}
     >
       <nav className="relative z-[60] mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">

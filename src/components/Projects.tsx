@@ -42,7 +42,7 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="bg-gray-50 py-20 dark:bg-slate-900/50">
+    <section id="projects" className="bg-[#f7f8fa] py-24 dark:bg-[#091426]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div initial={{ opacity: 0, y: -30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1.0 }} className="mb-12 text-center">
           <h2 className="section-title mb-4">مشاريعنا</h2>
@@ -51,7 +51,7 @@ export default function Projects() {
           </p>
         </motion.div>
 
-        <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 1.0 }} className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 1.0 }} className="mb-10 flex flex-col gap-4 rounded-2xl border border-primary-100 bg-white/90 p-4 shadow-sm sm:flex-row sm:items-center sm:justify-between dark:border-primary-900/50 dark:bg-slate-900/70">
           <div className="relative flex-1 sm:max-w-md">
             <svg
               className="absolute right-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400"

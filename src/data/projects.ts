@@ -13,7 +13,7 @@ export const projects: Project[] = [
     name: 'موقع لإدارة المحاماه',
     image: WORK_IMAGES.w01,
     statuses: ['مدفوع', 'جديد'],
-    demoUrl: '#',
+    demoUrl: 'https://law-firm-management-system-blue.vercel.app/',
     description: 'نظام متكامل لإدارة العملاء والقضايا والمواعيد للمكاتب القانونية.',
   },
   {

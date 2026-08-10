@@ -168,7 +168,7 @@ export default function Contact() {
 
           <div className="grid gap-12 lg:grid-cols-5">
             <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 1.0 }} className="lg:col-span-2">
-              <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm dark:border-gray-700 dark:bg-slate-800">
+              <div className="rounded-2xl border border-primary-100 bg-white p-8 shadow-sm dark:border-primary-900/60 dark:bg-slate-800">
                 <h3 className="card-heading mb-6">معلومات التواصل</h3>
 
                 <a
@@ -194,17 +194,17 @@ export default function Contact() {
                 </a>
 
                 <div className="mt-6 space-y-3">
-                  <div className="flex items-start gap-4 rounded-xl border border-emerald-100 bg-emerald-50/60 p-4 dark:border-emerald-900/40 dark:bg-emerald-950/20">
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald-100 text-emerald-600 dark:bg-emerald-900/50 dark:text-emerald-400">
+                  <div className="flex items-start gap-4 rounded-xl border border-primary-100 bg-primary-50/60 p-4 dark:border-primary-900/40 dark:bg-primary-950/20">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary-100 text-primary-600 dark:bg-primary-900/50 dark:text-primary-400">
                       <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                       </svg>
                     </div>
                     <div>
-                      <p className="mb-0.5 text-sm font-semibold text-emerald-800 dark:text-emerald-300">
+                      <p className="mb-0.5 text-sm font-semibold text-primary-800 dark:text-primary-300">
                         سرعة الرد
                       </p>
-                      <p className="text-sm leading-relaxed text-emerald-700/80 dark:text-emerald-400/90">
+                      <p className="text-sm leading-relaxed text-primary-700/80 dark:text-primary-400/90">
                         نرد على جميع الرسائل خلال 24 ساعة عمل
                       </p>
                     </div>
@@ -233,7 +233,7 @@ export default function Contact() {
               <form
                 onSubmit={handleSubmit}
                 noValidate
-                className="relative rounded-2xl border border-gray-200 bg-white p-8 shadow-sm dark:border-gray-700 dark:bg-slate-800"
+                className="relative rounded-2xl border border-primary-100 bg-white p-8 shadow-sm dark:border-primary-900/60 dark:bg-slate-800"
               >
                 <div
                   aria-hidden="true"

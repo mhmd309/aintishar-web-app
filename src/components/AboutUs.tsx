@@ -1,11 +1,22 @@
-import type { ReactNode } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import { COMPANY } from '../data/company';
 import { getCompletedProjectsCount, getYearsOfExperience } from '../utils/statistics';
-const ABOUT_IMAGES = {
-  primary: '/img/about/01.png',
-  secondary: '/img/about/02.png',
-} as const;
+
+const ABOUT_IMAGES = [
+  {
+    src: '/img/about/about-01.jpeg',
+    alt: `${COMPANY.fullName} - خدمات البرمجة والتسويق`,
+  },
+  {
+    src: '/img/about/about-2.png',
+    alt: `${COMPANY.fullName} - حلول رقمية متكاملة`,
+  },
+  {
+    src: '/img/about/about-3.png',
+    alt: `${COMPANY.fullName} - تصميم وتسويق إلكتروني`,
+  },
+] as const;
 
 function StatIcon({ type }: { type: string }) {
   const icons: Record<string, ReactNode> = {
@@ -51,12 +62,22 @@ function StatCard({
 export default function AboutUs() {
   const completedProjects = getCompletedProjectsCount();
   const yearsOfExperience = getYearsOfExperience();
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const activeImage = ABOUT_IMAGES[activeImageIndex];
 
   const statistics = [
     { id: 1, label: 'مشروع مكتمل', value: String(completedProjects), icon: 'projects' },
     { id: 2, label: 'عميل سعيد', value: String(COMPANY.happyClients), icon: 'clients' },
     { id: 3, label: 'سنوات خبرة', value: String(yearsOfExperience), icon: 'experience' },
   ] as const;
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActiveImageIndex((currentIndex) => (currentIndex + 1) % ABOUT_IMAGES.length);
+    }, 4500);
+
+    return () => window.clearInterval(timer);
+  }, []);
 
   return (
     <section id="about" className="py-20">
@@ -68,7 +89,7 @@ export default function AboutUs() {
 
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 1.0 }} className="space-y-8">
-            <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm dark:border-gray-700 dark:bg-slate-800">
+            <div className="rounded-2xl border border-primary-100 bg-white p-8 shadow-sm dark:border-primary-900/60 dark:bg-slate-800">
               <h3 className="card-heading mb-4">عن الشركة</h3>
               <p className="text-body">{COMPANY.description}</p>
             </div>
@@ -102,23 +123,37 @@ export default function AboutUs() {
           </motion.div>
 
           <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 1.0 }} className="relative">
-            <div className="grid gap-4">
-              <img
-                src={ABOUT_IMAGES.primary}
-                alt={`${COMPANY.fullName} - صورة 1`}
-                className="h-64 w-full rounded-2xl object-cover shadow-xl sm:h-72"
-              />
-              <img
-                src={ABOUT_IMAGES.secondary}
-                alt={`${COMPANY.fullName} - صورة 2`}
-                className="h-48 w-full rounded-2xl object-cover shadow-lg sm:h-56 lg:-mt-20 lg:mr-12 lg:w-[85%]"
+            <div className="h-[500px] overflow-hidden rounded-2xl border border-primary-100 dark:border-primary-900/60">
+              <motion.img
+                key={activeImage.src}
+                src={activeImage.src}
+                alt={activeImage.alt}
+                className="h-full w-full object-cover"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.35 }}
               />
             </div>
-            <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-t from-primary-900/30 to-transparent" />
+
+            <div className="mt-4 flex justify-center gap-2" dir="ltr">
+              {ABOUT_IMAGES.map((image, index) => (
+                <button
+                  key={image.src}
+                  type="button"
+                  onClick={() => setActiveImageIndex(index)}
+                  className={`h-2.5 rounded-full transition-all duration-200 ${
+                    activeImageIndex === index
+                      ? 'w-8 bg-primary-500'
+                      : 'w-2.5 bg-primary-200 hover:bg-primary-300 dark:bg-white/20 dark:hover:bg-white/30'
+                  }`}
+                  aria-label={`عرض صورة ${index + 1}`}
+                />
+              ))}
+            </div>
           </motion.div>
         </div>
 
-        <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1.0 }} className="mt-16 overflow-hidden rounded-2xl bg-gradient-to-r from-primary-600 via-primary-500 to-primary-700 shadow-lg shadow-primary-500/25 dark:from-primary-900 dark:via-primary-800 dark:to-primary-700">
+        <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1.0 }} className="mt-16 overflow-hidden rounded-3xl border border-primary-400/20 bg-gradient-to-r from-[#071326] via-[#10233e] to-primary-700 shadow-xl shadow-primary-900/15">
           <div className="grid grid-cols-1 lg:grid-cols-3">
             {statistics.map((stat) => (
               <StatCard

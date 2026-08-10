@@ -17,13 +17,13 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   const hasDemo = Boolean(project.demoUrl && isSafeHref(project.demoUrl));
 
   return (
-    <article className="group flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-primary-200 hover:shadow-xl hover:shadow-primary-500/10 dark:border-gray-700 dark:bg-slate-800 dark:hover:border-primary-700">
+    <article className="group flex flex-col overflow-hidden rounded-2xl border border-primary-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-primary-300 dark:border-primary-900/60 dark:bg-slate-800 dark:hover:border-primary-700">
       {/* صورة المشروع */}
       <div className="relative overflow-hidden">
         <img
           src={project.image}
           alt={project.name}
-          className="h-52 w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+          className="h-40 w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
           loading="lazy"
         />
 

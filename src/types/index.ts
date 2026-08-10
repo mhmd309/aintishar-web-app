@@ -33,5 +33,5 @@ export interface FormErrors {
 export interface SocialLink {
   name: string;
   url: string;
-  icon: 'whatsapp' | 'facebook';
+  icon: 'whatsapp' | 'facebook' | 'instagram' | 'youtube';
 }
