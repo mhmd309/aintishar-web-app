@@ -123,12 +123,12 @@ export default function AboutUs() {
           </motion.div>
 
           <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 1.0 }} className="relative">
-            <div className="h-[500px] overflow-hidden rounded-2xl border border-primary-100 dark:border-primary-900/60">
+            <div className="overflow-hidden rounded-2xl border border-primary-100 dark:border-primary-900/60 mt-10">
               <motion.img
                 key={activeImage.src}
                 src={activeImage.src}
                 alt={activeImage.alt}
-                className="h-full w-full object-cover"
+                className="max-w-full max-w-full object-contain"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.35 }}
