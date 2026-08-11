@@ -4,8 +4,8 @@ import { useTheme } from '../hooks/useTheme';
 
 const navLinks = [
   { href: '#home', label: 'الرئيسية' },
-  { href: '#projects', label: 'المشاريع' },
   { href: '#about', label: 'من نحن' },
+  { href: '#projects', label: 'المشاريع' },
   { href: '#contact', label: 'تواصل معنا' },
 ];
 
@@ -87,11 +87,10 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        isSolidHeader
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${isSolidHeader
           ? 'border-b border-primary-100 bg-white/95 shadow-sm backdrop-blur-lg dark:border-primary-900/50 dark:bg-[#071326]/95'
           : 'border-b border-white/10 bg-[#071326]/20 backdrop-blur-md'
-      }`}
+        }`}
     >
       <nav className="relative z-[60] mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <Logo variant={isSolidHeader ? 'default' : 'light'} />
@@ -163,17 +162,15 @@ export default function Navbar() {
       </nav>
 
       <div
-        className={`fixed inset-x-0 bottom-0 top-[72px] z-[55] bg-slate-900/50 transition-opacity md:hidden ${
-          isMenuOpen ? 'opacity-100' : 'pointer-events-none opacity-0'
-        }`}
+        className={`fixed inset-x-0 bottom-0 top-[72px] z-[55] bg-slate-900/50 transition-opacity md:hidden ${isMenuOpen ? 'opacity-100' : 'pointer-events-none opacity-0'
+          }`}
         onClick={() => setIsMenuOpen(false)}
         aria-hidden="true"
       />
 
       <div
-        className={`fixed inset-x-0 top-[72px] z-[58] max-h-[calc(100dvh-72px)] overflow-y-auto border-b border-gray-200 bg-white shadow-lg transition-all duration-300 md:hidden dark:border-gray-800 dark:bg-slate-900 ${
-          isMenuOpen ? 'visible opacity-100' : 'pointer-events-none invisible opacity-0'
-        }`}
+        className={`fixed inset-x-0 top-[72px] z-[58] max-h-[calc(100dvh-72px)] overflow-y-auto border-b border-gray-200 bg-white shadow-lg transition-all duration-300 md:hidden dark:border-gray-800 dark:bg-slate-900 ${isMenuOpen ? 'visible opacity-100' : 'pointer-events-none invisible opacity-0'
+          }`}
       >
         <ul className="flex flex-col gap-1 px-4 py-4">
           {navLinks.map((link) => {

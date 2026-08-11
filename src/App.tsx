@@ -11,8 +11,8 @@ function App() {
       <Navbar />
       <main>
         <HeroSlider />
-        <Projects />
         <AboutUs />
+        <Projects />
         <Contact />
       </main>
       <Footer />
