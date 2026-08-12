@@ -7,16 +7,5 @@ export default defineConfig({
   build: {
     sourcemap: false,
   },
-  server: {
-    watch: {
-      // على Windows: مراقبة public (خصوصاً الصور) تسبب EBUSY وتوقف السيرفر
-      ignored: ['**/public/**', '**/node_modules/**', '**/.git/**', '**/dist/**'],
-      usePolling: true,
-      interval: 1000,
-      awaitWriteFinish: {
-        stabilityThreshold: 500,
-        pollInterval: 100,
-      },
-    },
-  },
+
 });
