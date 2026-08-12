@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { COMPANY } from '../data/company';
 import { getCompletedProjectsCount, getYearsOfExperience } from '../utils/statistics';
@@ -64,7 +64,6 @@ export default function AboutUs() {
   const yearsOfExperience = getYearsOfExperience();
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [isVideoOpen, setIsVideoOpen] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
   const activeImage = ABOUT_IMAGES[activeImageIndex];
 
   const statistics = [
@@ -84,32 +83,8 @@ export default function AboutUs() {
   useEffect(() => {
     if (isVideoOpen) {
       document.body.style.overflow = 'hidden';
-      const tryPlay = async () => {
-        try {
-          if (videoRef.current) {
-            videoRef.current.muted = false;
-            await videoRef.current.play();
-          }
-        } catch {
-          try {
-            if (videoRef.current) {
-              videoRef.current.muted = true;
-              await videoRef.current.play();
-            }
-          } catch {
-            // ignore - user will click play manually
-          }
-        }
-      };
-      tryPlay();
     } else {
       document.body.style.overflow = '';
-      try {
-        videoRef.current?.pause();
-      } catch {
-        // ignore
-      }
-      if (videoRef.current) videoRef.current.currentTime = 0;
     }
 
     return () => {
@@ -251,29 +226,17 @@ export default function AboutUs() {
               </button>
 
               <div className="aspect-video w-full bg-black">
-                <video
-                  ref={videoRef}
-                  controls
-                  controlsList="nodownload"
-                  playsInline
-                  preload="auto"
-                  className="h-full w-full object-contain"
-                >
-                  <source src="/video/explanation.mp4" type="video/mp4;codecs=avc1,mp4a.40.2" />
-                  <source src="/video/explanation.mp4" type="video/mp4" />
-                  <div className="flex h-full w-full flex-col items-center justify-center gap-3 p-8 text-center text-white">
-                    <svg className="h-16 w-16 text-white/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 5.25v13.5m-7.5-13.5v13.5M3 5.25h18a2.25 2.25 0 012.25 2.25v9A2.25 2.25 0 0121 18.75H3A2.25 2.25 0 01.75 16.5v-9A2.25 2.25 0 013 5.25z" />
-                    </svg>
-                    <p className="text-lg font-semibold">تعذر تشغيل الفيديو</p>
-                    <p className="text-sm text-white/60">
-                      المتصفح لديه لا يدعم تنسيق الفيديو.
-                      <a href="/video/explanation.mp4" className="ml-1 text-primary-400 underline hover:text-primary-300" download>
-                        اضغط هنا لتحميل الفيديو
-                      </a>
-                    </p>
-                  </div>
-                </video>
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src="https://www.youtube.com/embed/vZeOXQzMbuU?autoplay=1"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                  className="h-full w-full"
+                ></iframe>
               </div>
             </motion.div>
           </motion.div>
