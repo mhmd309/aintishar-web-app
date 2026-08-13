@@ -4,6 +4,7 @@ import Projects from './components/Projects';
 import AboutUs from './components/AboutUs';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import FloatingViewCounter from './components/FloatingViewCounter';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Contact />
       </main>
       <Footer />
+      <FloatingViewCounter />
     </div>
   );
 }
