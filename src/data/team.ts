@@ -1,4 +1,5 @@
 export type TeamMember = {
+  title: 'المهندس' | 'المهندسة';
   name: string;
   role: string;
   responsibility: string;
@@ -6,9 +7,9 @@ export type TeamMember = {
 };
 
 export const TEAM: TeamMember[] = [
-  { name: 'محمد عماره', role: 'مبرمج', responsibility: 'تطوير الأنظمة والمواقع والحلول التقنية', image: '/img/team/mohamed.PNG' },
-  { name: 'محمود محي', role: 'مصمم وسوشيال ميديا', responsibility: 'التصميمات والهوية البصرية والمحتوى الرقمي', image: '/img/team/mahmoud.svg' },
-  { name: 'ياسمين صبري', role: 'مديرة التسويق', responsibility: 'وضع وتنفيذ الاستراتيجيات التسويقية وإدارة الحملات', image: '/img/team/yasmine.svg' },
-  { name: 'دعاء غانم', role: 'سوشيال ميديا', responsibility: 'إدارة منصات التواصل الاجتماعي وصناعة ونشر المحتوى', image: '/img/team/doaa.svg' },
-  { name: 'أحمد محمود', role: 'مطور تطبيقات موبايل', responsibility: 'تطوير تطبيقات الهاتف الذكية وتجربة مستخدم سلسة', image: '/img/team/ahmed.svg' },
+  { title: 'المهندس', name: 'محمد عماره', role: 'مبرمج', responsibility: 'تطوير الأنظمة والمواقع والحلول التقنية', image: '/img/team/mohamed.PNG' },
+  { title: 'المهندس', name: 'محمود محي', role: 'مصمم وسوشيال ميديا', responsibility: 'التصميمات والهوية البصرية والمحتوى الرقمي', image: '/img/team/mahmoud.svg' },
+  { title: 'المهندس', name: 'أحمد محمود', role: 'مطور تطبيقات موبايل', responsibility: 'تطوير تطبيقات الهاتف الذكية وتجربة مستخدم سلسة', image: '/img/team/ahmed.svg' },
+  { title: 'المهندسة', name: 'ياسمين صبري', role: 'مديرة التسويق', responsibility: 'وضع وتنفيذ الاستراتيجيات التسويقية وإدارة الحملات', image: '/img/team/yasmine.svg' },
+  { title: 'المهندسة', name: 'دعاء غانم', role: 'سوشيال ميديا', responsibility: 'إدارة منصات التواصل الاجتماعي وصناعة ونشر المحتوى', image: '/img/team/doaa.svg' },
 ];

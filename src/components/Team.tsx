@@ -14,10 +14,10 @@ export default function Team() {
           {TEAM.map((member, index) => (
             <motion.article key={member.name} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.08 }} className="group overflow-hidden rounded-3xl border border-primary-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 dark:border-primary-900/50 dark:bg-slate-800">
               <div className="relative aspect-square overflow-hidden bg-primary-50 dark:bg-slate-700">
-                <img src={member.image} alt={`صورة مؤقتة لـ ${member.name}`} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <img src={member.image} alt={`صورة ${member.title} ${member.name}`} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               </div>
               <div className="p-5 text-center">
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white">{member.name}</h3>
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white">{member.title} {member.name}</h3>
                 <p className="mt-1 text-sm font-semibold text-primary-600 dark:text-primary-400">{member.role}</p>
                 <p className="mt-3 text-sm leading-7 text-gray-600 dark:text-gray-300">{member.responsibility}</p>
               </div>
