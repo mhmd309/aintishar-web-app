@@ -1,0 +1,4 @@
+<svg width="600" height="600" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#29134D"/><stop offset="1" stop-color="#B54F9B"/></linearGradient></defs>
+  <rect width="600" height="600" rx="40" fill="url(#bg)"/><circle cx="300" cy="255" r="125" fill="#D99B78"/><path d="M177 255C162 153 225 92 310 92C395 92 439 157 419 256L383 202L342 176L271 203L211 221L177 255Z" fill="#30202B"/><path d="M157 600C165 452 210 374 300 374C390 374 435 452 443 600H157Z" fill="#F08A58"/><circle cx="254" cy="261" r="10" fill="#29134D"/><circle cx="346" cy="261" r="10" fill="#29134D"/><path d="M264 320C286 335 314 335 336 320" stroke="#8D493D" stroke-width="8" stroke-linecap="round"/><text x="300" y="540" fill="white" font-size="72" font-family="Arial" font-weight="700" text-anchor="middle">م م</text>
+</svg>

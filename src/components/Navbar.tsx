@@ -5,6 +5,7 @@ import { useTheme } from '../hooks/useTheme';
 const navLinks = [
   { href: '#home', label: 'الرئيسية' },
   { href: '#about', label: 'من نحن' },
+  { href: '#team', label: 'فريقنا' },
   { href: '#projects', label: 'المشاريع' },
   { href: '#contact', label: 'تواصل معنا' },
 ];
