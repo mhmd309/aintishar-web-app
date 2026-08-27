@@ -10,4 +10,5 @@ export const TEAM: TeamMember[] = [
   { name: 'محمود محي', role: 'مصمم وسوشيال ميديا', responsibility: 'التصميمات والهوية البصرية والمحتوى الرقمي', image: '/img/team/mahmoud.svg' },
   { name: 'ياسمين صبري', role: 'مديرة التسويق', responsibility: 'وضع وتنفيذ الاستراتيجيات التسويقية وإدارة الحملات', image: '/img/team/yasmine.svg' },
   { name: 'دعاء غانم', role: 'سوشيال ميديا', responsibility: 'إدارة منصات التواصل الاجتماعي وصناعة ونشر المحتوى', image: '/img/team/doaa.svg' },
+  { name: 'أحمد محمود', role: 'مطور تطبيقات موبايل', responsibility: 'تطوير تطبيقات الهاتف الذكية وتجربة مستخدم سلسة', image: '/img/team/ahmed.svg' },
 ];
